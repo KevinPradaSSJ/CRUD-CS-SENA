@@ -6,7 +6,7 @@
       "AbsoluteMoniker": "D:0:0:{A5376237-C23D-4DF0-A22D-461A06B7C6EE}|..\\Controllers\\Controllers.csproj|c:\\users\\kevin prada\\source\\repos\\controllers\\productocontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F1D740B2-E515-4E80-A4D7-F2A98255CB1F}|CRUD-SC-SENA.csproj|c:\\users\\kevin prada\\source\\repos\\crud-sc-sena\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F1D740B2-E515-4E80-A4D7-F2A98255CB1F}|CRUD-SC-SENA.csproj|C:\\Users\\Kevin Prada\\source\\repos\\CRUD-SC-SENA\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F1D740B2-E515-4E80-A4D7-F2A98255CB1F}|CRUD-SC-SENA.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -41,8 +41,7 @@
               "ToolTip": "C:\\Users\\Kevin Prada\\source\\repos\\CRUD-SC-SENA\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T19:07:37.297Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-08-08T19:07:37.297Z"
             }
           ]
         }
