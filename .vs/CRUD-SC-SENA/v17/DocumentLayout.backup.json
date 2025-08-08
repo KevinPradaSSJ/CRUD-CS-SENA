@@ -3,15 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\Kevin Prada\\source\\repos\\CRUD-SC-SENA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BD1C8222-F132-4D4A-8130-C226DF59565D}|..\\Models\\Models.csproj|c:\\users\\kevin prada\\source\\repos\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5376237-C23D-4DF0-A22D-461A06B7C6EE}|..\\Controllers\\Controllers.csproj|c:\\users\\kevin prada\\source\\repos\\controllers\\tipoproductocontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5376237-C23D-4DF0-A22D-461A06B7C6EE}|..\\Controllers\\Controllers.csproj|c:\\users\\kevin prada\\source\\repos\\controllers\\productocontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F1D740B2-E515-4E80-A4D7-F2A98255CB1F}|CRUD-SC-SENA.csproj|C:\\Users\\Kevin Prada\\source\\repos\\CRUD-SC-SENA\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F1D740B2-E515-4E80-A4D7-F2A98255CB1F}|CRUD-SC-SENA.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
@@ -28,52 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Producto.cs",
-              "DocumentMoniker": "C:\\Users\\Kevin Prada\\source\\repos\\Models\\Producto.cs",
-              "RelativeDocumentMoniker": "..\\Models\\Producto.cs",
-              "ToolTip": "C:\\Users\\Kevin Prada\\source\\repos\\Models\\Producto.cs*",
-              "RelativeToolTip": "..\\Models\\Producto.cs*",
-              "ViewState": "AgIAABkAAAAAAAAAAAAmwCUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T23:18:32.895Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TipoProductoControlador.cs",
-              "DocumentMoniker": "C:\\Users\\Kevin Prada\\source\\repos\\Controllers\\TipoProductoControlador.cs",
-              "RelativeDocumentMoniker": "..\\Controllers\\TipoProductoControlador.cs",
-              "ToolTip": "C:\\Users\\Kevin Prada\\source\\repos\\Controllers\\TipoProductoControlador.cs",
-              "RelativeToolTip": "..\\Controllers\\TipoProductoControlador.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T23:18:22.737Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductoControlador.cs",
-              "DocumentMoniker": "C:\\Users\\Kevin Prada\\source\\repos\\Controllers\\ProductoControlador.cs",
-              "RelativeDocumentMoniker": "..\\Controllers\\ProductoControlador.cs",
-              "ToolTip": "C:\\Users\\Kevin Prada\\source\\repos\\Controllers\\ProductoControlador.cs",
-              "RelativeToolTip": "..\\Controllers\\ProductoControlador.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T19:18:39.119Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Kevin Prada\\source\\repos\\CRUD-SC-SENA\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\Kevin Prada\\source\\repos\\CRUD-SC-SENA\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T19:07:37.297Z"
+              "WhenOpened": "2025-08-08T19:07:37.297Z",
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }
