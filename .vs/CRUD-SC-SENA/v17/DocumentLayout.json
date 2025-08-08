@@ -31,9 +31,9 @@
               "Title": "Producto.cs",
               "DocumentMoniker": "C:\\Users\\Kevin Prada\\source\\repos\\Models\\Producto.cs",
               "RelativeDocumentMoniker": "..\\Models\\Producto.cs",
-              "ToolTip": "C:\\Users\\Kevin Prada\\source\\repos\\Models\\Producto.cs*",
-              "RelativeToolTip": "..\\Models\\Producto.cs*",
-              "ViewState": "AgIAABkAAAAAAAAAAAAmwCUAAAABAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Kevin Prada\\source\\repos\\Models\\Producto.cs",
+              "RelativeToolTip": "..\\Models\\Producto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-08T23:18:32.895Z",
               "EditorCaption": ""
@@ -48,8 +48,7 @@
               "RelativeToolTip": "..\\Controllers\\TipoProductoControlador.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T23:18:22.737Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T23:18:22.737Z"
             },
             {
               "$type": "Document",
@@ -61,8 +60,7 @@
               "RelativeToolTip": "..\\Controllers\\ProductoControlador.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T19:18:39.119Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T19:18:39.119Z"
             },
             {
               "$type": "Document",
