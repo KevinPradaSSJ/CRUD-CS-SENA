@@ -80,5 +80,39 @@ namespace CRUD_SC_SENA.Controllers
                 return false;
             }
         }
+
+        public bool EliminarTipoProducto(int id)
+        {
+            try
+            {
+                string query = "DELETE FROM tipo_producto WHERE id_tipo = @id_tipo";
+
+                using (var connection = DatabaseConnection.GetConnection())
+                {
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id_tipo", id);
+
+                        int filasAfectadas = command.ExecuteNonQuery();
+                        
+                        if (filasAfectadas > 0)
+                        {
+                            Console.WriteLine(" Tipo de producto eliminado exitosamente");
+                            return true;
+                        }
+                        else
+                        {
+                            Console.WriteLine(" No se pudo eliminar el tipo de producto");
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error al eliminar el tipo de producto: {ex.Message}");
+                return false;
+            }
+        }
     }
 }
