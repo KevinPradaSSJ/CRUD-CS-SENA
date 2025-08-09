@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
-namespace Models.Tienda_CS
+namespace CRUD_SC_SENA.Models
 {
     // Esta clase representa un tipo de producto en la tienda
     public class TipoProducto

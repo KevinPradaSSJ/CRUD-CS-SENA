@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace Models.Tienda_CS
+namespace CRUD_SC_SENA.Models
 {
     //Esta clase representa un producto en la tienda
     public class Producto

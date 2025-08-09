@@ -2,7 +2,7 @@ using System;
 using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace TiendaCS
+namespace CRUD_SC_SENA.Models
 {
     public class DatabaseConnection
     {

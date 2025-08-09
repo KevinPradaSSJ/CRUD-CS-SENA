@@ -1,12 +1,11 @@
 
-using Models.Tienda_CS;
+using CRUD_SC_SENA.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using Tienda_CS;
+using MySql.Data.MySqlClient;
 
-
-namespace Controllers.Tienda_CS
+namespace CRUD_SC_SENA.Controllers
 {
     public class ProductoControlador
     {
@@ -21,7 +20,7 @@ namespace Controllers.Tienda_CS
 
                 using (var connection = DatabaseConnection.GetConnection())
                 {
-                    using (var command = new MySql.Data.MySqlClient.MySqlCommand(query, connection))
+                    using (var command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@nombre", producto.Nombre);
                         command.Parameters.AddWithValue("@precio", producto.Precio);
@@ -99,7 +98,7 @@ namespace Controllers.Tienda_CS
 
                 using (var connection = DatabaseConnection.GetConnection())
                 {
-                    using (var command = new MySql.Data.MySqlClient.MySqlCommand(query, connection))
+                    using (var command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@id", id);
 
@@ -135,7 +134,7 @@ namespace Controllers.Tienda_CS
 
                 using (var connection = DatabaseConnection.GetConnection())
                 {
-                    using (var command = new MySql.Data.MySqlClient.MySqlCommand(query, connection))
+                    using (var command = new MySqlCommand(query, connection))
                     {
                         using (var reader = command.ExecuteReader())
                         {
@@ -170,33 +169,43 @@ namespace Controllers.Tienda_CS
         public Producto ObtenerProductoPorId(int id)
         {
             Producto producto = null;
-            string connectionString = ConfigurationManager.ConnectionStrings["MiConexionBD"].ConnectionString;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                string query = "SELECT Id, Nombre, Precio, Stock FROM Productos WHERE Id = @Id";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Id", id);
+                string query = "SELECT id_producto, nombre, precio, tipo_id, stock FROM productos WHERE id_producto = @id";
 
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                using (var connection = DatabaseConnection.GetConnection())
                 {
-                    producto = new Producto
+                    using (var command = new MySqlCommand(query, connection))
                     {
-                        Id = Convert.ToInt32(reader["Id"]),
-                        Nombre = reader["Nombre"].ToString(),
-                        Precio = Convert.ToDecimal(reader["Precio"]),
-                        Stock = Convert.ToInt32(reader["Stock"])
-                    };
+                        command.Parameters.AddWithValue("@id", id);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                producto = new Producto
+                                {
+                                    IdProducto = reader.GetInt32("id_producto"),
+                                    Nombre = reader.GetString("nombre"),
+                                    Precio = reader.GetDecimal("precio"),
+                                    TipoId = reader.GetInt32("tipo_id"),
+                                    Stock = reader.GetInt32("stock")
+                                };
+                            }
+                        }
+                    }
                 }
 
-                reader.Close();
+                Console.WriteLine(producto != null ? " Producto encontrado correctamente" : " Producto no encontrado");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error al obtener el producto: {ex.Message}");
             }
 
             return producto;
-        }
+        }
 
     }
 }

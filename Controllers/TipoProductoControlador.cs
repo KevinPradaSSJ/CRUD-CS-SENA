@@ -1,12 +1,12 @@
-﻿using Models.Tienda_CS;
+﻿using CRUD_SC_SENA.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using Tienda_CS;
+using MySql.Data.MySqlClient;
 
-namespace Controllers.Tienda_CS
+namespace CRUD_SC_SENA.Controllers
 {
-    internal class TipoProductoControlador
+    public class TipoProductoControlador
     {
         //CLASE PARA EL CONTROLADOR DE TIPO PRODUCTO
         public bool CrearTipoProducto(TipoProducto tipoProducto)
@@ -18,7 +18,7 @@ namespace Controllers.Tienda_CS
 
                 using (var connection = DatabaseConnection.GetConnection())
                 {
-                    using (var command = new MySql.Data.MySqlClient.MySqlCommand(query, connection))
+                    using (var command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@nombre", tipoProducto.Nombre);
 
