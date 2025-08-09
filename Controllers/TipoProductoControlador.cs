@@ -114,5 +114,81 @@ namespace CRUD_SC_SENA.Controllers
                 return false;
             }
         }
+
+        public List<TipoProducto> LeerTiposProducto()
+        {
+            List<TipoProducto> listaTiposProducto = new List<TipoProducto>();
+
+            try
+            {
+                string query = "SELECT id_tipo, nombre FROM tipo_producto";
+
+                using (var connection = DatabaseConnection.GetConnection())
+                {
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                TipoProducto tipoProducto = new TipoProducto
+                                {
+                                    IdTipo = reader.GetInt32("id_tipo"),
+                                    Nombre = reader.GetString("nombre")
+                                };
+
+                                listaTiposProducto.Add(tipoProducto);
+                            }
+                        }
+                    }
+                }
+
+                Console.WriteLine(" Tipos de producto cargados correctamente");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error al leer los tipos de producto: {ex.Message}");
+            }
+
+            return listaTiposProducto;
+        }
+
+        public TipoProducto ObtenerTipoProductoPorId(int id)
+        {
+            TipoProducto tipoProducto = null;
+
+            try
+            {
+                string query = "SELECT id_tipo, nombre FROM tipo_producto WHERE id_tipo = @id_tipo";
+
+                using (var connection = DatabaseConnection.GetConnection())
+                {
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id_tipo", id);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                tipoProducto = new TipoProducto
+                                {
+                                    IdTipo = reader.GetInt32("id_tipo"),
+                                    Nombre = reader.GetString("nombre")
+                                };
+                            }
+                        }
+                    }
+                }
+
+                Console.WriteLine(tipoProducto != null ? " Tipo de producto encontrado correctamente" : " Tipo de producto no encontrado");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error al obtener el tipo de producto: {ex.Message}");
+            }
+
+            return tipoProducto;
+        }
     }
 }
