@@ -190,5 +190,231 @@ namespace CRUD_SC_SENA.Controllers
 
             return tipoProducto;
         }
+
+        public bool VerificarTipoProductoEnUso(int id)
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM productos WHERE tipo_id = @tipo_id";
+
+                using (var connection = DatabaseConnection.GetConnection())
+                {
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@tipo_id", id);
+
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+                        
+                        Console.WriteLine($" Productos encontrados con este tipo: {count}");
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error al verificar uso del tipo de producto: {ex.Message}");
+                return false;
+            }
+        }
+
+        public bool ExisteTipoProducto(string nombre)
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM tipo_producto WHERE nombre = @nombre";
+
+                using (var connection = DatabaseConnection.GetConnection())
+                {
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre", nombre);
+
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+                        
+                        Console.WriteLine($" Tipos de producto encontrados con ese nombre: {count}");
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error al verificar existencia del tipo de producto: {ex.Message}");
+                return false;
+            }
+        }
+
+        public bool ExisteTipoProductoParaActualizar(string nombre, int idActual)
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM tipo_producto WHERE nombre = @nombre AND id_tipo != @id_tipo";
+
+                using (var connection = DatabaseConnection.GetConnection())
+                {
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre", nombre);
+                        command.Parameters.AddWithValue("@id_tipo", idActual);
+
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+                        
+                        Console.WriteLine($" Otros tipos con ese nombre: {count}");
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error al verificar existencia para actualización: {ex.Message}");
+                return false;
+            }
+        }
+
+        public int ContarProductosPorTipo(int id)
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM productos WHERE tipo_id = @tipo_id";
+
+                using (var connection = DatabaseConnection.GetConnection())
+                {
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@tipo_id", id);
+
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+                        
+                        Console.WriteLine($" Productos contados para este tipo: {count}");
+                        return count;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error al contar productos por tipo: {ex.Message}");
+                return 0;
+            }
+        }
+
+        public List<TipoProducto> BuscarTiposPorNombre(string nombre)
+        {
+            List<TipoProducto> listaTiposProducto = new List<TipoProducto>();
+
+            try
+            {
+                string query = "SELECT id_tipo, nombre FROM tipo_producto WHERE nombre LIKE @nombre";
+
+                using (var connection = DatabaseConnection.GetConnection())
+                {
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre", $"%{nombre}%");
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                TipoProducto tipoProducto = new TipoProducto
+                                {
+                                    IdTipo = reader.GetInt32("id_tipo"),
+                                    Nombre = reader.GetString("nombre")
+                                };
+
+                                listaTiposProducto.Add(tipoProducto);
+                            }
+                        }
+                    }
+                }
+
+                Console.WriteLine($" Tipos de producto encontrados en búsqueda: {listaTiposProducto.Count}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error al buscar tipos de producto: {ex.Message}");
+            }
+
+            return listaTiposProducto;
+        }
+
+        public List<TipoProducto> ObtenerTiposConProductos()
+        {
+            List<TipoProducto> listaTiposProducto = new List<TipoProducto>();
+
+            try
+            {
+                string query = @"SELECT DISTINCT tp.id_tipo, tp.nombre 
+                               FROM tipo_producto tp 
+                               INNER JOIN productos p ON tp.id_tipo = p.tipo_id";
+
+                using (var connection = DatabaseConnection.GetConnection())
+                {
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                TipoProducto tipoProducto = new TipoProducto
+                                {
+                                    IdTipo = reader.GetInt32("id_tipo"),
+                                    Nombre = reader.GetString("nombre")
+                                };
+
+                                listaTiposProducto.Add(tipoProducto);
+                            }
+                        }
+                    }
+                }
+
+                Console.WriteLine($" Tipos de producto con productos asociados: {listaTiposProducto.Count}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error al obtener tipos con productos: {ex.Message}");
+            }
+
+            return listaTiposProducto;
+        }
+
+        public List<TipoProducto> ObtenerTiposSinProductos()
+        {
+            List<TipoProducto> listaTiposProducto = new List<TipoProducto>();
+
+            try
+            {
+                string query = @"SELECT tp.id_tipo, tp.nombre 
+                               FROM tipo_producto tp 
+                               LEFT JOIN productos p ON tp.id_tipo = p.tipo_id 
+                               WHERE p.tipo_id IS NULL";
+
+                using (var connection = DatabaseConnection.GetConnection())
+                {
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                TipoProducto tipoProducto = new TipoProducto
+                                {
+                                    IdTipo = reader.GetInt32("id_tipo"),
+                                    Nombre = reader.GetString("nombre")
+                                };
+
+                                listaTiposProducto.Add(tipoProducto);
+                            }
+                        }
+                    }
+                }
+
+                Console.WriteLine($" Tipos de producto sin productos asociados: {listaTiposProducto.Count}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error al obtener tipos sin productos: {ex.Message}");
+            }
+
+            return listaTiposProducto;
+        }
     }
 }
